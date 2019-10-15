@@ -49,7 +49,7 @@ class Tolls:
         tag = [link.find_all('a') for link in boxe][0]
         yield [a.get('href') for a in tag]
 
-    def get_tam_and_list_page(self, url: str) -> tuple:
+    def get_tam_and_links(self, url: str) -> tuple:
         """
         :param url: pagina inicial do site antt
         :return: tamanho atual/paginação e tambem uma lista contendo esses elementos;
@@ -62,7 +62,7 @@ class Tolls:
         links = [a.get('href') for a in tag]
         return tam, links
 
-tam, links = Tolls().get_tam_and_list_page(ATRIBUTOS.get('url_toll'))
+tam, links = Tolls().get_tam_and_links(ATRIBUTOS.get('url_toll'))
 
 for link in links:
     print(site('{}{}'.format(ATRIBUTOS.get('base_url'), Tolls().format_strs(link))))
